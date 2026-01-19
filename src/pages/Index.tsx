@@ -13,6 +13,7 @@ interface Slide {
   items?: string[];
   comment?: string;
   question?: string;
+  imageUrl?: string;
 }
 
 const slides: Slide[] = [
@@ -83,7 +84,8 @@ const slides: Slide[] = [
     id: 10,
     type: 'image',
     title: 'Палех',
-    question: 'Какие чувства вызывает эта работа?'
+    question: 'Какие чувства вызывает эта работа?',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/19b8b824-8b55-4089-92fd-f6bf4d2ca56e.jpg'
   },
   {
     id: 11,
@@ -95,7 +97,8 @@ const slides: Slide[] = [
   {
     id: 12,
     type: 'image',
-    title: 'Федоскино'
+    title: 'Федоскино',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/0f00bac4-cba6-4a8b-a247-814889cbe5a3.jpg'
   },
   {
     id: 13,
@@ -191,27 +194,32 @@ const slides: Slide[] = [
   {
     id: 28,
     type: 'image',
-    title: 'Линии'
+    title: 'Линии',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/05b3ef0c-44ef-48b8-a891-ec6b6c23cb20.jpg'
   },
   {
     id: 29,
     type: 'image',
-    title: 'Точки и капли'
+    title: 'Точки и капли',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/a7f8c5ec-71c4-4a33-9803-5673b3eb0e0e.jpg'
   },
   {
     id: 30,
     type: 'image',
-    title: 'Практическая работа'
+    title: 'Практическая работа',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/a513070f-99bf-4009-a00d-624eb8cfe4dc.jpg'
   },
   {
     id: 31,
     type: 'image',
-    title: 'Практическая работа'
+    title: 'Практическая работа',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/05b3ef0c-44ef-48b8-a891-ec6b6c23cb20.jpg'
   },
   {
     id: 32,
     type: 'image',
-    title: 'Практическая работа'
+    title: 'Практическая работа',
+    imageUrl: 'https://cdn.poehali.dev/projects/ae0e2ca4-45b1-44fd-be32-cd5b29b12dca/files/a7f8c5ec-71c4-4a33-9803-5673b3eb0e0e.jpg'
   },
   {
     id: 33,
@@ -377,12 +385,22 @@ const Index = () => {
                 <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-8 text-center">
                   {slide.title}
                 </h2>
-                <div className="flex items-center justify-center p-12 bg-muted/30 rounded-lg border-2 border-dashed border-primary/30 min-h-[300px]">
-                  <div className="text-center space-y-4">
-                    <Icon name="Image" size={64} className="text-primary mx-auto" />
-                    <p className="text-lg text-muted-foreground">Визуальный пример</p>
+                {slide.imageUrl ? (
+                  <div className="rounded-lg overflow-hidden border-4 border-primary/20 shadow-xl">
+                    <img 
+                      src={slide.imageUrl} 
+                      alt={slide.title}
+                      className="w-full h-auto object-cover"
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-center justify-center p-12 bg-muted/30 rounded-lg border-2 border-dashed border-primary/30 min-h-[300px]">
+                    <div className="text-center space-y-4">
+                      <Icon name="Image" size={64} className="text-primary mx-auto" />
+                      <p className="text-lg text-muted-foreground">Визуальный пример</p>
+                    </div>
+                  </div>
+                )}
                 {slide.question && (
                   <div className="mt-8 p-6 bg-secondary/10 rounded-lg border-2 border-secondary">
                     <p className="text-xl font-semibold text-secondary">{slide.question}</p>
